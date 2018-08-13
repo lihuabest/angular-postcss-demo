@@ -9,7 +9,15 @@ module.exports = {
         "postcss-write-svg": {
             utf8: false
         },
-        // "postcss-cssnext": {},
+        "postcss-preset-env": {
+            stage: 1,
+            features: {
+                "nesting-rules": true
+            },
+            autoprefixer: {
+                grid: true
+            }
+        },
         "postcss-px-to-viewport": {
             viewportWidth: 750, // (Number) The width of the viewport.
             viewportHeight: 1334, // (Number) The height of the viewport.
@@ -21,9 +29,9 @@ module.exports = {
         },
         "postcss-viewport-units": {},
         // "cssnano": {
-        //     preset: "advanced",
-        //     autoprefixer: false,
-        //     "postcss-zindex": false
+            // preset: "advanced",
+            // autoprefixer: false,
+            // "postcss-zindex": false
         // },
         "postcss-mixins": {}, // postcss-mixins 和 postcss-nested 配合，可以使用宏定义
         "postcss-nested": {}

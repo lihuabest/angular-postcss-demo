@@ -10,7 +10,7 @@ fs.readFile(filepath, 'utf8', function (err,data) {
     if (index > 191 && index < 201) {
         line = '// ' + line;
     }
-    if (index === 201) {
+    if (index === 201) { // 同理，如果angular.json里配置的css也需要postcss编译，就修改文件里 extractTextPlugin里的配置
         result.push(`
             {
                 loader: 'to-string-loader'
@@ -25,6 +25,17 @@ fs.readFile(filepath, 'utf8', function (err,data) {
             {
                 loader: 'postcss-loader'
             },
+        `);
+    }
+
+    if (index > 213 && index < 223) {
+        line = '// ' + line;
+    }
+
+    if (index === 233) {
+        result.push(`
+            'css-loader',
+            'postcss-loader',
         `);
     }
 
