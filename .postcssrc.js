@@ -27,7 +27,9 @@ module.exports = {
             minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
             mediaQuery: false // (Boolean) Allow px to be converted in media queries.著作权归作者所有。
         },
-        "postcss-viewport-units": {},
+        "postcss-viewport-units": {
+            filterRule: rule => rule.selector.indexOf("::after") === -1 && rule.selector.indexOf("::before") === -1 && rule.selector.indexOf(":after") === -1 && rule.selector.indexOf(":before") === -1
+        },
         // "cssnano": {
             // preset: "advanced",
             // autoprefixer: false,

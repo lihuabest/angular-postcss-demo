@@ -1,5 +1,5 @@
-<div class="container">
-    <h1>angular absolute url in html, postcss, scss</h1>
+<div class="content">
+    <h1>Angular absolute url in html, postcss, scss</h1>
 
     <h3>postcss background url</h3>
     <div>
@@ -7,6 +7,14 @@
     </div>
     <div class="code">
         background: url(~src/assets/images/btn_up.png) no-repeat center scroll;
+    </div>
+
+    <h3>postcss background url, relative path</h3>
+    <div>
+        <span class="global-postcss"></span>
+    </div>
+    <div class="code">
+        background: url(assets/images/btn_pause.png) no-repeat center scroll;
     </div>
 
     <h3>img src in html</h3>
@@ -17,11 +25,27 @@
         < img src="~src/assets/images/btn_down.png" alt="">
     </div>
 
+    <h3>global background scss background url</h3>
+    <div>
+        <span class="global-background-scss"></span>
+    </div>
+    <div class="code">
+        background: url(~../src/assets/images/btn_pause.png) no-repeat center scroll;
+    </div>
+
     <h3>scss background url</h3>
     <div>
         <span class="background-scss"></span>
     </div>
     <div class="code">
-        background: url(~../src/assets/images/btn_pause.png) no-repeat center scroll;
+        background: url(~src/assets/images/btn_up.png) no-repeat center scroll;
+    </div>
+
+    <h3>frotend scss background url, relative path</h3>
+    <div>
+        <span class="global-scss"></span>
+    </div>
+    <div class="code">
+        background: url(../assets/images/btn_pause.png) no-repeat center scroll;
     </div>
 </div>
