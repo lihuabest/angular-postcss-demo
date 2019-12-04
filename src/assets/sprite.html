@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sprite 背景图</title>
+  <style>
+    .item {
+      display: inline-block;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .item:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      initData();
+    };
+
+    function initData() {
+      var url = './sprite.json';
+      var request = new XMLHttpRequest();
+      request.open('get', url);
+      request.send(null);
+      request.onload = function () {
+        if (request.status === 200) {
+          var json = JSON.parse(request.responseText);
+          initDom(json.frames);
+        }
+      };
+    }
+
+    function initDom(data) {
+      var html = [];
+      Object.keys(data).forEach(icon => {
+        var str = `
+          <div class="item">
+            <div style="display: inline-block;width:${ data[icon].frame.w}px;height: ${data[icon].frame.h}px;background-image: url(sprite.png);background-position: ${-(data[icon].frame.x)}px ${-(data[icon].frame.y)}px"></div>
+            <div class="name">.icon-${ icon.substr(0, icon.lastIndexOf('.'))}</div>
+          </div>
+        `
+        html.push(str);
+      });
+
+      document.body.innerHTML = html.join('');
+
+      let items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        item.addEventListener('click', function(e) {
+          var name = item.querySelector('.name').innerHTML;
+          Clipboard(name)
+        }, false);
+      });
+    }
+
+    function Clipboard(text, success, fail) {
+      // ------创建一个value为text且隐藏的textarea元素-------//
+      textArea = document.createElement('textArea')
+      textArea.value = text
+      textArea.style.opacity = '0'
+      textArea.setAttribute('readonly', 'readonly')
+      document.body.appendChild(textArea)
+      // --------------选择textarea中内容-------------------//
+      if (navigator.userAgent.match(/ipad|iphone/i)) {
+        window.getSelection().removeAllRanges()
+        let range = document.createRange()
+        range.selectNode(textArea)
+        window.getSelection().addRange(range)
+        textArea.setSelectionRange(0, 999999)
+      } else {
+        textArea.select()
+      }
+      // -------------------复制内容------------------------//
+      try {
+        if (document.execCommand('Copy')) {
+          success && success('复制成功！', text)
+        } else {
+          fail && fail('复制失败！请手动复制！')
+        }
+      }
+      catch (err) {
+        fail && fail('复制失败！请手动复制！')
+      }
+      // -------------------移除元素-----------------------//
+      window.getSelection().removeAllRanges()
+      document.body.removeChild(textArea)
+    }
+  </script>
+</body>
+
+</html>

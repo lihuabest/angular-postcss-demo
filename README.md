@@ -1,8 +1,6 @@
-# angular absolute url in html, postcss, scss
+# Demo
 
-# AngularPostcssDemo
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server
 

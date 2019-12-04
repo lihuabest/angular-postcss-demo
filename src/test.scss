@@ -1,0 +1,12 @@
+.test {
+  font-size: 22px;
+  background: red;
+}
+
+$maxIndex: 30;
+$unit: 1px;
+@for $i from 10 to $maxIndex {
+  .h$(i) {
+      font-size: $(i)px !important;
+  }
+}

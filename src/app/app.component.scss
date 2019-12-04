@@ -1,8 +1,17 @@
-.content {
-    .background-scss {
-        width: 50px;
-        height: 50px;
-        display: inline-block;
-        background: url(~src/assets/images/btn_up.png) no-repeat center scroll;
-    }
+@import 'frontend-common/var.scss';
+
+$aa: 200px;
+
+.container {
+  text-align: center;
+  .content {
+    height: 200px;
+    width: 50%;
+    background: url(/assets/images/btn_camera.png) no-repeat center scroll;
+  }
+
+  .test {
+    width: 100px;
+    color: $blue;
+  }
 }
