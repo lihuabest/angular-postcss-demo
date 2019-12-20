@@ -29,31 +29,64 @@ const postcssLoader = {
   }
 };
 
+const templateFunction = function(data) {
+  var ratina = 2; // 两倍图
+  var shared = '.ico { background-image: url(I); background-size: Wpx Hpx; display: inline-block; }'
+    .replace('I', data.sprites[0].image)
+    .replace('W', data.sprites[0].total_width / ratina)
+    .replace('H', data.sprites[0].total_height / ratina);
+
+  var perSprite = data.sprites.map(function (sprite) {
+    return '.N { width: Wpx; height: Hpx; background-position: Xpx Ypx; }'
+        .replace('N', sprite.name)
+        .replace('W', sprite.width / ratina)
+        .replace('H', sprite.height / ratina)
+        .replace('X', sprite.offset_x / ratina)
+        .replace('Y', sprite.offset_y / ratina);
+  }).join('\n');
+
+  return shared + '\n' + perSprite;
+};
+
 const spritePlugin = new SpritesmithPlugin({
   src: {
-    cwd: path.resolve(__dirname, 'src/assets/images'),
+    cwd: path.resolve(__dirname, 'src/assets/images/sprite'),
     glob: '*.png'
   },
   target: {
     image: path.resolve(__dirname, 'src/assets/sprite.png'),
     css: [
-          path.resolve(__dirname, 'src/assets/sprite.css'),
+          [path.resolve(__dirname, 'src/assets/sprite.css'), { format: 'function_based_template' }],
           [path.resolve(__dirname, 'src/assets/sprite.json'), { format: 'json_texture' }]
     ]
   },
   apiOptions: {
     cssImageRef: "assets/sprite.png"
+  },
+  customTemplates: {
+    'function_based_template': templateFunction
+  },
+  spritesmithOptions: {
+    padding: 4,
   }
 });
 
 module.exports = (config, options) => {
+  let cssConfig = config.module.rules.find(
+    rule => rule.test.toString() === '/\\.css$/'
+  );
+  // cssConfig.use.splice(1, 0, { loader: 'sass-loader'})
+  // cssConfig.use[2].options = postcssLoader.options;
+  // console.log(cssConfig)
 
   config.module.rules = config.module.rules.filter(
     rule => rule.test.toString() !== '/\\.scss$|\\.sass$/' && rule.test.toString() !== '/\\.css$/'
+    // rule => rule.test.toString() !== '/\\.scss$|\\.sass$/'
   );
 
   // CSS Module support
   config.module.rules.push({
+    // exclude: cssConfig.exclude,
     test: /\.(css)$/,
     use: [
       'style-loader',

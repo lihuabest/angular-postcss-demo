@@ -3,10 +3,6 @@
   background: red;
 }
 
-$maxIndex: 30;
-$unit: 1px;
-@for $i from 10 to $maxIndex {
-  .h$(i) {
-      font-size: $(i)px !important;
-  }
+.test2 {
+  border: 1px solid transparent;
 }

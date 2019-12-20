@@ -1,19 +1,123 @@
 {
     "frames": {
-        "avatar.png": {
-            "frame": {
-                "x": 68,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            }
-        },
-        "btn_camera.png": {
+        "ico_64_access_control.png": {
             "frame": {
                 "x": 0,
                 "y": 0,
-                "w": 68,
-                "h": 68
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_area_manage.png": {
+            "frame": {
+                "x": 132,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_camera_manage.png": {
+            "frame": {
+                "x": 0,
+                "y": 132,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_campus_manage.png": {
+            "frame": {
+                "x": 132,
+                "y": 132,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_campus_security.png": {
+            "frame": {
+                "x": 264,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_check_notes.png": {
+            "frame": {
+                "x": 264,
+                "y": 132,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_class_call-over.png": {
+            "frame": {
+                "x": 0,
+                "y": 264,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_dormitory_checking.png": {
+            "frame": {
+                "x": 132,
+                "y": 264,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_face_check.png": {
+            "frame": {
+                "x": 264,
+                "y": 264,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_identity_manage.png": {
+            "frame": {
+                "x": 396,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_object_manage.png": {
+            "frame": {
+                "x": 396,
+                "y": 132,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_ocr.png": {
+            "frame": {
+                "x": 396,
+                "y": 264,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_studens_manage.png": {
+            "frame": {
+                "x": 0,
+                "y": 396,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_user_manage.png": {
+            "frame": {
+                "x": 132,
+                "y": 396,
+                "w": 128,
+                "h": 128
+            }
+        },
+        "ico_64_visitor.png": {
+            "frame": {
+                "x": 264,
+                "y": 396,
+                "w": 128,
+                "h": 128
             }
         }
     },
@@ -23,8 +127,8 @@
         "image": "assets/sprite.png",
         "scale": 1,
         "size": {
-            "w": 116,
-            "h": 68
+            "w": 524,
+            "h": 524
         }
     }
 }

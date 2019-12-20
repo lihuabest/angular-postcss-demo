@@ -36,18 +36,19 @@
       request.onload = function () {
         if (request.status === 200) {
           var json = JSON.parse(request.responseText);
-          initDom(json.frames);
+          initDom(json.frames, json.meta);
         }
       };
     }
 
-    function initDom(data) {
+    function initDom(data, meta) {
       var html = [];
+      var ratina = 2;
       Object.keys(data).forEach(icon => {
         var str = `
           <div class="item">
-            <div style="display: inline-block;width:${ data[icon].frame.w}px;height: ${data[icon].frame.h}px;background-image: url(sprite.png);background-position: ${-(data[icon].frame.x)}px ${-(data[icon].frame.y)}px"></div>
-            <div class="name">.icon-${ icon.substr(0, icon.lastIndexOf('.'))}</div>
+            <div style="display: inline-block;width:${ data[icon].frame.w / ratina }px;height: ${data[icon].frame.h / ratina }px;background-image: url(sprite.png);background-size: ${ meta.size.w / ratina }px ${ meta.size.h / ratina }px; background-position: ${-(data[icon].frame.x / ratina)}px ${-(data[icon].frame.y / ratina)}px"></div>
+            <div class="name">.${ icon.substr(0, icon.lastIndexOf('.'))}</div>
           </div>
         `
         html.push(str);
