@@ -72,21 +72,13 @@ const spritePlugin = new SpritesmithPlugin({
 });
 
 module.exports = (config, options) => {
-  let cssConfig = config.module.rules.find(
-    rule => rule.test.toString() === '/\\.css$/'
-  );
-  // cssConfig.use.splice(1, 0, { loader: 'sass-loader'})
-  // cssConfig.use[2].options = postcssLoader.options;
-  // console.log(cssConfig)
 
   config.module.rules = config.module.rules.filter(
     rule => rule.test.toString() !== '/\\.scss$|\\.sass$/' && rule.test.toString() !== '/\\.css$/'
-    // rule => rule.test.toString() !== '/\\.scss$|\\.sass$/'
   );
 
   // CSS Module support
   config.module.rules.push({
-    // exclude: cssConfig.exclude,
     test: /\.(css)$/,
     use: [
       'style-loader',
